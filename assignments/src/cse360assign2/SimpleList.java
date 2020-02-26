@@ -9,9 +9,11 @@ package cse360assign2;
 public class SimpleList {
 	private int[] list;
 	private int count;
+	private int maxSize;
 	
 	SimpleList()
 	{
+		maxSize = 10;
 		list = new int[10];
 		count = 0;
 	}
@@ -33,6 +35,26 @@ public class SimpleList {
 			list[0] = input;
 			 count++;
 		}
+		else
+		{
+			maxSize = (int) ((maxSize) * 1.5);
+			
+			int[] tempList = new int[maxSize];
+			
+			for(int index = 0; index < count; index++)
+			{
+				tempList[index + 1] = list[index]; 
+			}
+			
+			list = new int[maxSize];
+			
+			for(int index = 0; index < count; index++)
+			{
+				list[index + 1] =  tempList[index + 1];
+			}
+			list[0] = input;
+			 count++;
+		}
 		
 	}
 		
@@ -42,7 +64,12 @@ public class SimpleList {
 		{
 			if( list[index] == input)
 			{
-				int tempList[] = new int[10];
+				if ((count - 1) < (maxSize * .75))
+				{
+					maxSize = (int) ((maxSize) * .75);
+				}
+				
+				int tempList[] = new int[maxSize];
 				
 				for(int innerIndex = 0; innerIndex <index; innerIndex++)
 				{
@@ -89,6 +116,21 @@ public class SimpleList {
 			}
 		}
 		return returnVariable;
+	}
+	
+	public int first()
+	{
+		return list[0];
+	}
+	
+	public int size()
+	{
+		return maxSize;
+	}
+	
+	public void append(int input)
+	{
+		
 	}
 	
 }

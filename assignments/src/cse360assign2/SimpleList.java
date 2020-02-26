@@ -130,7 +130,27 @@ public class SimpleList {
 	
 	public void append(int input)
 	{
-		
+		if( count + 1 >= maxSize)
+		{
+			maxSize = (int) ((maxSize) * 1.5);
+			
+			int[] tempList = new int[maxSize];
+			
+			for(int index = 0; index < count; index++)
+			{
+				tempList[index] = list[index]; 
+			}
+			
+			list = new int[maxSize];
+			
+			for(int index = 0; index < count; index++)
+			{
+				list[index] =  tempList[index + 1];
+			}
+			 
+		}
+		list[count] = input;
+		count++;
 	}
 	
 }

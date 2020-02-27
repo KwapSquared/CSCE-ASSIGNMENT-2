@@ -120,7 +120,30 @@ public class SimpleList {
 	
 	public int first()
 	{
-		return list[0];
+		int ReturnVar;
+		if(count != 0)
+		{
+			ReturnVar = list[0];
+		}
+		else 
+		{
+			ReturnVar = -1;
+		}
+		return ReturnVar;
+	}
+	
+	public int last()
+	{
+		int ReturnVar;
+		if(count != 0)
+		{
+			ReturnVar = list[count];
+		}
+		else 
+		{
+			ReturnVar = -1;
+		}
+		return ReturnVar;
 	}
 	
 	public int size()
